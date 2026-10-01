@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Gender - Volta</title>
+    <link rel="stylesheet" href="gender.css">
+</head>
+
+<body>
+
+    <main class="gender-container">
+
+        <h1>Select gender</h1>
+
+        <p class="description">
+            Volta will change gender.
+        </p>
+
+        <div class="gender-options">
+
+            <button
+                type="button"
+                class="gender-button male"
+                onclick="selectGender('male')"
+                aria-label="Male">
+                <span class="gender-icon">♂</span>
+            </button>
+
+            <button
+                type="button"
+                class="gender-button female"
+                onclick="selectGender('female')"
+                aria-label="Female">
+                <span class="gender-icon">♀</span>
+            </button>
+
+        </div>
+
+        <button
+            type="button"
+            class="confirm-button"
+            onclick="confirmGender()">
+            Confirm
+        </button>
+
+    </main>
+
+    <script>
+        let selectedGender = null;
+
+        function selectGender(gender) {
+            selectedGender = gender;
+
+            document.querySelectorAll(".gender-button").forEach(button => {
+                button.classList.remove("selected");
+            });
+
+            document
+                .querySelector("." + gender)
+                .classList.add("selected");
+        }
+
+        function confirmGender() {
+            if (!selectedGender) {
+                return;
+            }
+
+            localStorage.setItem("voltaGender", selectedGender);
+
+            // Continue to the next Volta page.
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+</html>
