@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+
+    background-image: url("starryvolta.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 15, 45, 0.35);
+    z-index: -1;
+}
+
+.login-container {
+    width: min(90%, 430px);
+    text-align: center;
+    padding: 32px 24px;
+}
+
+.volta-logo {
+    width: 180px;
+    max-width: 70%;
+    height: auto;
+    margin-bottom: 28px;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.description {
+    font-size: 16px;
+    line-height: 1.5;
+    opacity: 0.9;
+    margin-bottom: 32px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+button {
+    width: 100%;
+    min-height: 52px;
+    border-radius: 28px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.create-button {
+    border: none;
+    background: white;
+    color: #183b9c;
+}
+
+.login-button {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.terms {
+    margin-top: 24px;
+    font-size: 12px;
+    line-height: 1.6;
+    opacity: 0.75;
+}
+
+.terms a {
+    color: white;
+    text-decoration: underline;
+}
+
+.terms a:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 24px 20px;
+    }
+
+    .volta-logo {
+        width: 150px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+}
