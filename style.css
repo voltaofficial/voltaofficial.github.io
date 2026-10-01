@@ -4,6 +4,97 @@
     padding: 0;
 }
 
+/* Create User Dialogue */
+
+.dialog-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+
+    z-index: 100;
+}
+
+.dialog-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dialog {
+    position: relative;
+    width: min(88%, 400px);
+    padding: 34px 24px 26px;
+
+    background: rgba(20, 35, 75, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 28px;
+
+    text-align: center;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+}
+
+.dialog h2 {
+    margin: 8px 0 24px;
+    color: white;
+    font-size: 24px;
+}
+
+/* Red round X button at center-top */
+.close-button {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #e53935;
+    color: white;
+
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.close-button:hover {
+    opacity: 0.9;
+}
+
+/* Username input */
+.username-input {
+    width: 100%;
+    height: 52px;
+
+    padding: 0 18px;
+
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 26px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+
+    font-size: 16px;
+}
+
+.username-input::placeholder {
+    color: rgba(255, 255, 255, 0.65);
+}
+
 body {
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
@@ -113,127 +204,5 @@ button:active {
 
     h1 {
         font-size: 26px;
-
-    /* Create User Dialogue */
-
-.dialog-overlay {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(0, 0, 0, 0.55);
-
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
-
-    z-index: 100;
-}
-
-.dialog-overlay.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.dialog {
-    position: relative;
-    width: min(88%, 400px);
-    padding: 34px 24px 26px;
-
-    background: rgba(20, 35, 75, 0.97);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 28px;
-
-    text-align: center;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
-}
-
-.dialog h2 {
-    margin: 8px 0 24px;
-    color: white;
-    font-size: 24px;
-}
-
-/* Red round X button at center-top */
-.close-button {
-    position: absolute;
-    top: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: 34px;
-    height: 34px;
-
-    border: none;
-    border-radius: 50%;
-
-    background: #e53935;
-    color: white;
-
-    font-size: 24px;
-    line-height: 30px;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.close-button:hover {
-    opacity: 0.9;
-}
-
-/* Username input */
-.username-input {
-    width: 100%;
-    height: 52px;
-
-    padding: 0 18px;
-
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 26px;
-
-    outline: none;
-
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-
-    font-size: 16px;
-}
-
-.username-input::placeholder {
-    color: rgba(255, 255, 255, 0.65);
-}
-
-.username-input:focus {
-    border-color: white;
-}
-
-/* Done button */
-.done-button {
-    width: 100%;
-    height: 52px;
-
-    margin-top: 18px;
-
-    border: none;
-    border-radius: 26px;
-
-    background: white;
-    color: #183b9c;
-
-    font-size: 16px;
-    font-weight: 600;
-
-    cursor: pointer;
-}
-
-.done-button:hover {
-    opacity: 0.9;
-}
-
-.done-button:active {
-    transform: scale(0.97);
-
     }
 }
