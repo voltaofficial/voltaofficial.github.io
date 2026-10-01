@@ -6,6 +6,7 @@
     <title>Volta</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <main class="login-container">
@@ -18,11 +19,16 @@
         </p>
 
         <div class="buttons">
-            <button class="create-button" onclick="openCreateUser()">
+            <button
+                type="button"
+                class="create-button"
+                onclick="openCreateUser()">
                 Create user
             </button>
 
-            <button class="login-button">
+            <button
+                type="button"
+                class="login-button">
                 Log in
             </button>
         </div>
@@ -36,49 +42,92 @@
         </p>
     </main>
 
-    <!-- Create User Dialogue -->
-    <div id="createUserDialog" class="dialog-overlay">
-        <div class="dialog">
 
-            <button class="close-button" onclick="closeCreateUser()">
+    <!-- Create User Modal -->
+    <div
+        id="createUserDialog"
+        class="dialog-overlay"
+        aria-hidden="true">
+
+        <section
+            class="create-user-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="createUserTitle">
+
+            <button
+                type="button"
+                class="dialog-close"
+                aria-label="Close"
+                onclick="closeCreateUser()">
                 ×
             </button>
 
-            <h2>Create with user</h2>
+            <h2 id="createUserTitle">
+                Create with user
+            </h2>
 
             <input
+                id="usernameInput"
                 type="text"
                 class="username-input"
                 placeholder="Write username"
                 maxlength="30"
-            >
+                autocomplete="username">
 
-            <button class="done-button" onclick="createUser()">
+            <button
+                type="button"
+                class="dialog-done"
+                onclick="createUser()">
                 Done
             </button>
 
-        </div>
+        </section>
     </div>
 
+
     <script>
+        const dialog = document.getElementById("createUserDialog");
+        const usernameInput = document.getElementById("usernameInput");
+
         function openCreateUser() {
-            document.getElementById("createUserDialog").classList.add("show");
+            dialog.classList.add("show");
+            dialog.setAttribute("aria-hidden", "false");
+
+            setTimeout(() => {
+                usernameInput.focus();
+            }, 100);
         }
 
         function closeCreateUser() {
-            document.getElementById("createUserDialog").classList.remove("show");
+            dialog.classList.remove("show");
+            dialog.setAttribute("aria-hidden", "true");
         }
 
         function createUser() {
-            const username = document.querySelector(".username-input").value.trim();
+            const username = usernameInput.value.trim();
 
-            if (username === "") {
-                alert("Please write a username.");
+            if (!username) {
+                usernameInput.focus();
                 return;
             }
 
             alert("User created: " + username);
         }
+
+        // Close when clicking outside the dialog
+        dialog.addEventListener("click", function(event) {
+            if (event.target === dialog) {
+                closeCreateUser();
+            }
+        });
+
+        // Close with Escape
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape" && dialog.classList.contains("show")) {
+                closeCreateUser();
+            }
+        });
     </script>
 
 </body>
