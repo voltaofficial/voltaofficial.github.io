@@ -4,103 +4,19 @@
     padding: 0;
 }
 
-/* Create User Dialogue */
-
-.dialog-overlay {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(0, 0, 0, 0.55);
-
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
-
-    z-index: 100;
-}
-
-.dialog-overlay.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.dialog {
-    position: relative;
-    width: min(88%, 400px);
-    padding: 34px 24px 26px;
-
-    background: rgba(20, 35, 75, 0.97);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 28px;
-
-    text-align: center;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
-}
-
-.dialog h2 {
-    margin: 8px 0 24px;
-    color: white;
-    font-size: 24px;
-}
-
-/* Red round X button at center-top */
-.close-button {
-    position: absolute;
-    top: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: 34px;
-    height: 34px;
-
-    border: none;
-    border-radius: 50%;
-
-    background: #e53935;
-    color: white;
-
-    font-size: 24px;
-    line-height: 30px;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.close-button:hover {
-    opacity: 0.9;
-}
-
-/* Username input */
-.username-input {
+html,
+body {
     width: 100%;
-    height: 52px;
-
-    padding: 0 18px;
-
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 26px;
-
-    outline: none;
-
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-
-    font-size: 16px;
-}
-
-.username-input::placeholder {
-    color: rgba(255, 255, 255, 0.65);
+    min-height: 100%;
 }
 
 body {
     min-height: 100vh;
+
     font-family: Arial, Helvetica, sans-serif;
     color: white;
 
-    background-image: url("/images/starryvolta.png");
+    background-image: url("starryvolta.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -110,18 +26,13 @@ body {
     justify-content: center;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(5, 15, 45, 0.35);
-    z-index: -1;
-}
+
+/* Main login screen */
 
 .login-container {
     width: min(90%, 430px);
-    text-align: center;
     padding: 32px 24px;
+    text-align: center;
 }
 
 .volta-logo {
@@ -134,6 +45,7 @@ body::before {
 h1 {
     font-size: 30px;
     font-weight: 700;
+    line-height: 1.2;
     margin-bottom: 12px;
 }
 
@@ -144,6 +56,9 @@ h1 {
     margin-bottom: 32px;
 }
 
+
+/* Main buttons */
+
 .buttons {
     display: flex;
     flex-direction: column;
@@ -151,18 +66,13 @@ h1 {
     width: 100%;
 }
 
-button {
+.buttons button {
     width: 100%;
     min-height: 52px;
     border-radius: 28px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.15s ease, opacity 0.15s ease;
-}
-
-button:active {
-    transform: scale(0.97);
 }
 
 .create-button {
@@ -177,6 +87,9 @@ button:active {
     border: 2px solid white;
 }
 
+
+/* Terms */
+
 .terms {
     margin-top: 24px;
     font-size: 12px;
@@ -189,9 +102,195 @@ button:active {
     text-decoration: underline;
 }
 
-.terms a:hover {
-    opacity: 0.8;
+
+/* ==================================================
+   CREATE USER DIALOG
+   ================================================== */
+
+
+/* Full-screen modal background */
+
+.dialog-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.60);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+
+    z-index: 9999 !important;
 }
+
+
+/* Visible modal */
+
+.dialog-overlay.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* Dialog card */
+
+.create-user-dialog {
+    position: relative;
+
+    width: min(90vw, 390px) !important;
+    max-width: 390px;
+
+    padding: 58px 24px 26px;
+
+    border-radius: 28px;
+
+    background: #102653;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5);
+
+    text-align: center;
+
+    transform: scale(0.94);
+    transition: transform 0.2s ease;
+}
+
+.dialog-overlay.show .create-user-dialog {
+    transform: scale(1);
+}
+
+
+/* Small red round X */
+
+.dialog-close {
+    position: absolute !important;
+
+    top: 14px !important;
+    left: 50% !important;
+
+    transform: translateX(-50%) !important;
+
+    width: 38px !important;
+    min-width: 38px !important;
+    max-width: 38px !important;
+
+    height: 38px !important;
+    min-height: 38px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: none !important;
+    border-radius: 50% !important;
+
+    background: #e53935 !important;
+    color: white !important;
+
+    font-size: 25px !important;
+    font-weight: bold !important;
+    line-height: 38px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    cursor: pointer;
+}
+
+.dialog-close:hover {
+    background: #f04440 !important;
+}
+
+
+/* Dialog title */
+
+.create-user-dialog h2 {
+    margin: 0 0 22px;
+
+    color: white;
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+/* Username input */
+
+.username-input {
+    display: block;
+
+    width: 100% !important;
+    height: 52px !important;
+
+    padding: 0 18px !important;
+    margin: 0 !important;
+
+    border: 2px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 26px !important;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.10) !important;
+    color: white !important;
+
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.username-input::placeholder {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.username-input:focus {
+    border-color: white !important;
+}
+
+
+/* Done button */
+
+.dialog-done {
+    display: block;
+
+    width: 100% !important;
+    height: 52px !important;
+    min-height: 52px !important;
+
+    margin: 18px 0 0 !important;
+    padding: 0 !important;
+
+    border: none !important;
+    border-radius: 26px !important;
+
+    background: white !important;
+    color: #183b9c !important;
+
+    font-family: inherit;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+
+    cursor: pointer;
+}
+
+.dialog-done:active {
+    transform: scale(0.98);
+}
+
+
+/* Mobile */
 
 @media (max-width: 480px) {
     .login-container {
@@ -203,6 +302,12 @@ button:active {
     }
 
     h1 {
-        font-size: 26px;
+        font-size: 28px;
+    }
+
+    .create-user-dialog {
+        width: calc(100vw - 40px) !important;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
