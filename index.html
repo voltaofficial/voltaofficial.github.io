@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <main class="login-container">
-        <img src="/images/voltalogo.png" alt="Volta" class="volta-logo">
+        <img src="voltalogo.png" alt="Volta" class="volta-logo">
 
         <h1>Welcome to Volta</h1>
 
@@ -17,8 +18,13 @@
         </p>
 
         <div class="buttons">
-            <button class="create-button">Create user</button>
-            <button class="login-button">Log in</button>
+            <button class="create-button" onclick="openCreateUser()">
+                Create user
+            </button>
+
+            <button class="login-button">
+                Log in
+            </button>
         </div>
 
         <p class="terms">
@@ -29,5 +35,51 @@
             please login it.
         </p>
     </main>
+
+    <!-- Create User Dialogue -->
+    <div id="createUserDialog" class="dialog-overlay">
+        <div class="dialog">
+
+            <button class="close-button" onclick="closeCreateUser()">
+                ×
+            </button>
+
+            <h2>Create with user</h2>
+
+            <input
+                type="text"
+                class="username-input"
+                placeholder="Write username"
+                maxlength="30"
+            >
+
+            <button class="done-button" onclick="createUser()">
+                Done
+            </button>
+
+        </div>
+    </div>
+
+    <script>
+        function openCreateUser() {
+            document.getElementById("createUserDialog").classList.add("show");
+        }
+
+        function closeCreateUser() {
+            document.getElementById("createUserDialog").classList.remove("show");
+        }
+
+        function createUser() {
+            const username = document.querySelector(".username-input").value.trim();
+
+            if (username === "") {
+                alert("Please write a username.");
+                return;
+            }
+
+            alert("User created: " + username);
+        }
+    </script>
+
 </body>
 </html>
