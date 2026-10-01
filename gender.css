@@ -1,0 +1,186 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    background: #050505;
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Main container */
+
+.gender-container {
+    width: min(90%, 420px);
+    padding: 32px 24px;
+
+    text-align: center;
+}
+
+
+/* Title */
+
+.gender-container h1 {
+    font-size: 30px;
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+
+/* Description */
+
+.description {
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 16px;
+    line-height: 1.5;
+
+    margin-bottom: 36px;
+}
+
+
+/* Gender buttons */
+
+.gender-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 28px;
+
+    margin-bottom: 36px;
+}
+
+.gender-button {
+    width: 86px;
+    height: 86px;
+
+    border: 3px solid transparent;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.gender-button:hover {
+    transform: scale(1.06);
+}
+
+.gender-button:active {
+    transform: scale(0.96);
+}
+
+
+/* Male */
+
+.gender-button.male {
+    background: #1976d2;
+    color: white;
+}
+
+
+/* Female */
+
+.gender-button.female {
+    background: #e91e63;
+    color: white;
+}
+
+
+/* Selected gender */
+
+.gender-button.selected {
+    border-color: white;
+
+    box-shadow:
+        0 0 0 4px rgba(255, 255, 255, 0.15);
+}
+
+
+/* Gender icon */
+
+.gender-icon {
+    font-size: 42px;
+    font-weight: bold;
+
+    line-height: 1;
+}
+
+
+/* Confirm */
+
+.confirm-button {
+    width: 100%;
+    height: 54px;
+
+    border: none;
+    border-radius: 28px;
+
+    background: white;
+    color: #111;
+
+    font-family: inherit;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        opacity 0.15s ease;
+}
+
+.confirm-button:hover {
+    opacity: 0.9;
+}
+
+.confirm-button:active {
+    transform: scale(0.98);
+}
+
+
+/* Small screens */
+
+@media (max-width: 480px) {
+    .gender-container {
+        padding: 24px 20px;
+    }
+
+    .gender-container h1 {
+        font-size: 27px;
+    }
+
+    .gender-button {
+        width: 78px;
+        height: 78px;
+    }
+
+    .gender-icon {
+        font-size: 38px;
+    }
+      }
