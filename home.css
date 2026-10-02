@@ -1,0 +1,350 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    background: #070b18;
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    padding-bottom: 100px;
+}
+
+
+/* =========================
+   TOP BAR
+   ========================= */
+
+.top-bar {
+    width: 100%;
+
+    min-height: 72px;
+
+    padding: 14px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+
+    background: rgba(7, 11, 24, 0.92);
+
+    backdrop-filter: blur(12px);
+
+    z-index: 20;
+}
+
+
+/* Volta logo */
+
+.volta-logo {
+    width: 105px;
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* Top-right icons */
+
+.top-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+.top-icon {
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 19px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.top-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+
+/* =========================
+   HOME CONTENT
+   ========================= */
+
+.home-content {
+    width: min(100%, 1000px);
+
+    margin: 0 auto;
+
+    padding: 28px 18px;
+}
+
+.discover h1 {
+    font-size: 30px;
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+.section-description {
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 15px;
+
+    margin-bottom: 22px;
+}
+
+
+/* =========================
+   GAME GRID
+   ========================= */
+
+.game-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(145px, 1fr));
+
+    gap: 16px;
+}
+
+.game-card {
+    min-width: 0;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    background: #121a2d;
+
+    color: white;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-3px);
+    background: #18233b;
+}
+
+.game-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    background: #202c48;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 48px;
+}
+
+.game-card h2 {
+    padding: 12px 12px 4px;
+
+    font-size: 16px;
+}
+
+.game-card p {
+    padding: 0 12px 14px;
+
+    color: rgba(255, 255, 255, 0.6);
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   BOTTOM NAVIGATION
+   ========================= */
+
+.bottom-nav {
+    position: fixed;
+
+    left: 50%;
+    bottom: 14px;
+
+    transform: translateX(-50%);
+
+    width: min(94%, 520px);
+
+    height: 70px;
+
+    padding: 8px 12px;
+
+    border-radius: 35px;
+
+    background: rgba(18, 26, 45, 0.96);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.45);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    z-index: 50;
+
+    backdrop-filter: blur(15px);
+}
+
+
+/* Normal navigation buttons */
+
+.nav-button {
+    width: 72px;
+    height: 58px;
+
+    border: none;
+
+    background: transparent;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+}
+
+.nav-button span {
+    font-size: 22px;
+
+    line-height: 1;
+}
+
+.nav-button small {
+    font-size: 10px;
+}
+
+.nav-button.active {
+    color: white;
+}
+
+
+/* Create button */
+
+.create-nav-button {
+    width: 56px;
+    height: 56px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: white;
+
+    color: #111;
+
+    font-size: 34px;
+    font-weight: 300;
+
+    line-height: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.35);
+}
+
+.create-nav-button:active {
+    transform: scale(0.94);
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 480px) {
+
+    .top-bar {
+        padding: 12px 12px;
+    }
+
+    .volta-logo {
+        width: 90px;
+    }
+
+    .top-actions {
+        gap: 2px;
+    }
+
+    .top-icon {
+        width: 38px;
+        height: 38px;
+
+        font-size: 17px;
+    }
+
+    .home-content {
+        padding: 24px 14px;
+    }
+
+    .discover h1 {
+        font-size: 27px;
+    }
+
+    .game-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .bottom-nav {
+        height: 66px;
+        bottom: 10px;
+    }
+
+    .nav-button {
+        width: 62px;
+    }
+
+    .create-nav-button {
+        width: 52px;
+        height: 52px;
+    }
+  }
