@@ -426,3 +426,242 @@ body {
         font-size: 30px;
     }
     }
+
+/* Prevent background scrolling while the dialog is open */
+body.dialog-open {
+    overflow: hidden;
+}
+
+/* Full-screen overlay */
+.create-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px;
+
+    background: rgba(0, 0, 0, 0.72);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.create-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Dialog panel */
+.create-panel {
+    position: relative;
+
+    width: 100%;
+    max-width: 440px;
+    max-height: 90vh;
+    overflow-y: auto;
+
+    padding: 28px 22px 24px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 26px;
+
+    background: #101a30;
+    color: white;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Close button */
+.create-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+
+    width: 36px;
+    height: 36px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #e53935;
+    color: white;
+
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* Heading */
+.create-panel > h2 {
+    margin: 4px 42px 22px 0;
+
+    font-size: 27px;
+    color: white;
+}
+
+/* Tabs */
+.create-tabs {
+    display: flex;
+    gap: 8px;
+
+    margin-bottom: 24px;
+}
+
+.create-tab {
+    flex: 1;
+    min-width: 0;
+
+    padding: 11px 5px;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 22px;
+
+    background: transparent;
+    color: white;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.create-tab.active {
+    background: white;
+    color: #183b9c;
+    border-color: white;
+}
+
+/* Forms */
+.create-section h3 {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.create-section label {
+    display: block;
+
+    margin: 16px 0 8px;
+
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+}
+
+.create-section input:not([type="file"]),
+.create-section select,
+.create-section textarea {
+    display: block;
+
+    width: 100%;
+    min-height: 48px;
+
+    padding: 12px 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+
+    background: #192640;
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.create-section input[type="file"] {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+
+    padding: 10px 0;
+
+    color: rgba(255, 255, 255, 0.8);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+.create-section select option {
+    background: #192640;
+    color: white;
+}
+
+.create-section textarea {
+    resize: vertical;
+}
+
+.create-section input:focus,
+.create-section select:focus,
+.create-section textarea:focus {
+    outline: 2px solid #8baeff;
+    outline-offset: 2px;
+}
+
+.create-help {
+    margin-top: 12px;
+
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Submit buttons */
+.create-submit {
+    width: 100%;
+    min-height: 50px;
+
+    margin-top: 24px;
+    padding: 12px 18px;
+
+    border: none;
+    border-radius: 26px;
+
+    background: white;
+    color: #183b9c;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.create-submit:active {
+    transform: scale(0.98);
+}
+
+/* Utility class */
+.create-section.hidden {
+    display: none;
+}
+
+/* Feedback */
+.create-message {
+    margin-top: 16px;
+
+    color: #c8d8ff;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.create-message:empty {
+    display: none;
+}
+
+/* Small screens */
+@media (max-width: 380px) {
+    .create-panel {
+        padding: 24px 16px 20px;
+        border-radius: 22px;
+    }
+
+    .create-tab {
+        font-size: 12px;
+    }
+}
