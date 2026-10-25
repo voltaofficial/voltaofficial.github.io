@@ -101,5 +101,218 @@
 
     </nav>
 
+        <!-- Create Menu Overlay -->
+<div id="createOverlay" class="create-overlay">
+    <section class="create-panel" role="dialog" aria-modal="true"
+             aria-labelledby="createTitle">
+
+        <button class="create-close" onclick="closeCreateMenu()"
+                aria-label="Close">&times;</button>
+
+        <h2 id="createTitle">Create</h2>
+
+        <!-- Create Menu Tabs -->
+        <div class="create-tabs">
+            <button class="create-tab active"
+                    onclick="showCreateSection('games', this)">
+                Games
+            </button>
+
+            <button class="create-tab"
+                    onclick="showCreateSection('assets', this)">
+                Assets
+            </button>
+
+            <button class="create-tab"
+                    onclick="showCreateSection('post', this)">
+                Post
+            </button>
+        </div>
+
+        <!-- GAMES -->
+        <form id="gamesSection" class="create-section"
+              onsubmit="publishGame(event)">
+
+            <h3>Create a game</h3>
+
+            <label for="gameName">Game name</label>
+            <input id="gameName" type="text"
+                   placeholder="Write game name"
+                   maxlength="60" required>
+
+            <label for="gameTemplate">Game template</label>
+            <select id="gameTemplate" required>
+                <option value="">Select a template</option>
+                <option value="Solo platformer">Solo platformer</option>
+                <option value="Solo RPG">Solo RPG</option>
+                <option value="PvP">PvP</option>
+            </select>
+
+            <p class="create-help">
+                Choose a template to start creating your game.
+            </p>
+
+            <button type="submit" class="create-submit">
+                Publish game
+            </button>
+        </form>
+
+        <!-- ASSETS -->
+        <form id="assetsSection" class="create-section hidden"
+              onsubmit="publishAsset(event)">
+
+            <h3>Create an asset</h3>
+
+            <label for="assetType">Asset type</label>
+            <select id="assetType" required>
+                <option value="">Select asset type</option>
+                <option value="Profile picture">Profile picture</option>
+                <option value="Stickers">Stickers</option>
+            </select>
+
+            <label for="assetName">Asset name</label>
+            <input id="assetName" type="text"
+                   placeholder="Write asset name"
+                   maxlength="60" required>
+
+            <label for="assetImage">Select an image</label>
+            <input id="assetImage" type="file"
+                   accept="image/*" required>
+
+            <button type="submit" class="create-submit">
+                Create asset
+            </button>
+        </form>
+
+        <!-- POST -->
+        <form id="postSection" class="create-section hidden"
+              onsubmit="publishPost(event)">
+
+            <h3>Create a post</h3>
+
+            <label for="postImage">Select an image</label>
+            <input id="postImage" type="file"
+                   accept="image/*" required>
+
+            <label for="postTitle">Post title</label>
+            <input id="postTitle" type="text"
+                   placeholder="Write post title"
+                   maxlength="100" required>
+
+            <label for="postDescription">Description</label>
+            <textarea id="postDescription"
+                      placeholder="Write a description"
+                      rows="4" maxlength="2000"
+                      required></textarea>
+
+            <button type="submit" class="create-submit">
+                Publish post
+            </button>
+        </form>
+
+        <p id="createMessage" class="create-message"
+           role="status"></p>
+
+    </section>
+</div>
+
+<script>
+    const createOverlay = document.getElementById("createOverlay");
+
+    // Open the Create menu
+    document.querySelector(".create-nav-button").addEventListener("click", () => {
+        createOverlay.classList.add("visible");
+        document.body.classList.add("dialog-open");
+    });
+
+    // Close the Create menu
+    function closeCreateMenu() {
+        createOverlay.classList.remove("visible");
+        document.body.classList.remove("dialog-open");
+    }
+
+    // Switch between Games, Assets, and Post
+    function showCreateSection(section, button) {
+        document.querySelectorAll(".create-section").forEach(form => {
+            form.classList.add("hidden");
+        });
+
+        document.getElementById(section + "Section").classList.remove("hidden");
+
+        document.querySelectorAll(".create-tab").forEach(tab => {
+            tab.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        document.getElementById("createMessage").textContent = "";
+    }
+
+    // Demo: validate a game submission
+    function publishGame(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("gameName").value.trim();
+        const template = document.getElementById("gameTemplate").value;
+
+        if (!name || !template) return;
+
+        showMessage(
+            'Game "' + name + '" is ready to publish using the ' +
+            template + ' template. A publishing backend is required to publish it.'
+        );
+    }
+
+    // Demo: validate an asset submission
+    function publishAsset(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("assetName").value.trim();
+        const type = document.getElementById("assetType").value;
+        const image = document.getElementById("assetImage").files[0];
+
+        if (!name || !type || !image) return;
+
+        showMessage(
+            type + ' asset "' + name +
+            '" is selected. Connect a backend to save or publish it.'
+        );
+    }
+
+    // Demo: validate a post submission
+    function publishPost(event) {
+        event.preventDefault();
+
+        const title = document.getElementById("postTitle").value.trim();
+        const description = document.getElementById("postDescription").value.trim();
+        const image = document.getElementById("postImage").files[0];
+
+        if (!title || !description || !image) return;
+
+        showMessage(
+            'Post "' + title +
+            '" is ready. Connect a backend to publish it.'
+        );
+    }
+
+    function showMessage(message) {
+        document.getElementById("createMessage").textContent = message;
+    }
+
+    // Close when tapping outside the panel
+    createOverlay.addEventListener("click", event => {
+        if (event.target === createOverlay) {
+            closeCreateMenu();
+        }
+    });
+
+    // Close with Escape
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+            closeCreateMenu();
+        }
+    });
+            </script>
+        
 </body>
     </html>
