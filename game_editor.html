@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volta Game Editor</title>
+    <link rel="stylesheet" href="game_editor.css">
+</head>
+<body>
+
+    <header class="editor-header">
+        <button class="back-button" onclick="history.back()" aria-label="Back">
+            &#8592;
+        </button>
+
+        <h2 id="gameTitle">My Game</h2>
+
+        <span class="version">0.0.1+build1</span>
+    </header>
+
+    <main class="editor-workspace">
+        <!-- Game editing workspace -->
+    </main>
+
+    <footer class="editor-toolbar">
+        <div class="left-buttons">
+            <button onclick="publishGame()">Publish</button>
+            <button onclick="playGame()">Play</button>
+            <button class="remove-button" onclick="removeGame()">Remove</button>
+        </div>
+
+        <button class="new-map-button" onclick="newMap()">New map</button>
+    </footer>
+
+    <script>
+        const gameName = localStorage.getItem("voltaGameName") || "My Game";
+        document.getElementById("gameTitle").textContent = gameName;
+
+        function publishGame() {
+            alert("Publish game coming soon!");
+        }
+
+        function playGame() {
+            alert("Play game coming soon!");
+        }
+
+        function removeGame() {
+            if (confirm("Remove this game?")) {
+                localStorage.removeItem("voltaGameName");
+                window.location.href = "home.html";
+            }
+        }
+
+        function newMap() {
+            alert("New map coming soon!");
+        }
+    </script>
+
+</body>
+</html>
