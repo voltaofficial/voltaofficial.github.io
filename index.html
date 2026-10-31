@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volta</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -76,21 +76,9 @@
                 maxlength="30"
                 autocomplete="username">
 
-            <button type="button" onclick="saveUser()">Done</button>
-            <script>
-            async function saveUser() {
-            const username = document.getElementById("username").value.trim();
-            if (!username) {
-            alert("Please write a username!");
-            return;
-            }
-
-    // Save username locally for now
-    localStorage.setItem("voltaUsername", username);
-
-    window.location.href = "home.html";
-}
-</script>
+            <div id="createUserModal" class="modal hidden">
+    <div class="modal-content">
+        <button class="close-button" onclick="closeCreateUser()">×</button>
             
             <button
                 type="button"
@@ -98,6 +86,19 @@
                 onclick="window.location.href='gender.html'">
                 Done
             </button>
+
+        <script>
+        function saveUser() {
+    const username = document.getElementById("username").value.trim();
+
+    if (!username) {
+        alert("Please write a username!");
+        return;
+    }
+
+    localStorage.setItem("voltaUsername", username);
+    window.location.href = "home.html";
+    }
 
         </section>
     </div>
