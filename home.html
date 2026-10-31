@@ -112,11 +112,6 @@
             </button>
 
             <button class="create-tab"
-                    onclick="showCreateSection('assets', this)">
-                Assets
-            </button>
-
-            <button class="create-tab"
                     onclick="showCreateSection('post', this)">
                 Post
             </button>
@@ -147,33 +142,6 @@
 
             <button type="submit" class="create-submit">
                 Publish game
-            </button>
-        </form>
-
-        <!-- ASSETS -->
-        <form id="assetsSection" class="create-section hidden"
-              onsubmit="publishAsset(event)">
-
-            <h3>Create an asset</h3>
-
-            <label for="assetType">Asset type</label>
-            <select id="assetType" required>
-                <option value="">Select asset type</option>
-                <option value="Profile picture">Profile picture</option>
-                <option value="Stickers">Stickers</option>
-            </select>
-
-            <label for="assetName">Asset name</label>
-            <input id="assetName" type="text"
-                   placeholder="Write asset name"
-                   maxlength="60" required>
-
-            <label for="assetImage">Select an image</label>
-            <input id="assetImage" type="file"
-                   accept="image/*" required>
-
-            <button type="submit" class="create-submit">
-                Create asset
             </button>
         </form>
 
