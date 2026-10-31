@@ -129,10 +129,23 @@
                    maxlength="60" required>
 
             <button type="submit" class="create-submit">
-                onclick="window.location.href='game_editor.html'">
                 Create game
             </button>
         </form>
+
+        <script>
+        function createGame() {
+        const gameName = document.getElementById("gameName").value.trim();
+
+            if (!gameName) {
+           alert("Please write a game name.");
+           return;
+        }
+
+    localStorage.setItem("voltaGameName", gameName);
+    window.location.href = "game_editor.html";
+}
+</script>
 
         <!-- POST -->
         <form id="postSection" class="create-section hidden"
