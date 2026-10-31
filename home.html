@@ -128,20 +128,9 @@
                    placeholder="Write game name"
                    maxlength="60" required>
 
-            <label for="gameTemplate">Game template</label>
-            <select id="gameTemplate" required>
-                <option value="">Select a template</option>
-                <option value="Solo platformer">Solo platformer</option>
-                <option value="Solo RPG">Solo RPG</option>
-                <option value="PvP">PvP</option>
-            </select>
-
-            <p class="create-help">
-                Choose a template to start creating your game.
-            </p>
-
             <button type="submit" class="create-submit">
-                Publish game
+                onclick="window.location.href='game_editor.html'">
+                Create game
             </button>
         </form>
 
