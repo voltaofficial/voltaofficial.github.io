@@ -635,6 +635,22 @@ body.dialog-open {
     transform: scale(0.98);
 }
 
+.create-game-button {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 50px;
+    background: white;
+    color: #244b99;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.create-game-button:active {
+    opacity: 0.8;
+}
+
 /* Utility class */
 .create-section.hidden {
     display: none;
