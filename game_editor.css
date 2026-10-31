@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #101014;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+.editor-header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    gap: 15px;
+    background: #19191f;
+    border-bottom: 1px solid #303039;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.editor-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.version {
+    color: white;
+    font-size: 13px;
+}
+
+.editor-workspace {
+    min-height: calc(100vh - 130px);
+    background: #101014;
+}
+
+.editor-toolbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 70px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background: #19191f;
+    border-top: 1px solid #303039;
+}
+
+.left-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.editor-toolbar button {
+    padding: 11px 15px;
+    border: none;
+    border-radius: 9px;
+    background: #30303a;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.editor-toolbar .remove-button {
+    background: #a83232;
+}
+
+.editor-toolbar .new-map-button {
+    background: #2878ed;
+    font-weight: bold;
+}
+
+.editor-toolbar button:active {
+    opacity: 0.7;
+}
