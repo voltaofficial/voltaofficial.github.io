@@ -311,3 +311,26 @@ h1 {
         padding-right: 20px;
     }
 }
+
+.hidden {
+    display: none !important;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #111a30;
+    padding: 25px;
+    border-radius: 20px;
+    width: 85%;
+    color: white;
+    text-align: center;
+}
