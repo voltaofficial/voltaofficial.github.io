@@ -610,6 +610,23 @@ body.dialog-open {
     line-height: 1.5;
 }
 
+/* Create game buttons */
+.create-game-button {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 50px;
+    background: white;
+    color: #244b99;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.create-game-button:active {
+    opacity: 0.8;
+}
+
 /* Submit buttons */
 .create-submit {
     width: 100%;
@@ -633,22 +650,6 @@ body.dialog-open {
 
 .create-submit:active {
     transform: scale(0.98);
-}
-
-.create-game-button {
-    width: 100%;
-    padding: 18px;
-    border: none;
-    border-radius: 50px;
-    background: white;
-    color: #244b99;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.create-game-button:active {
-    opacity: 0.8;
 }
 
 /* Utility class */
