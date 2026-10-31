@@ -118,38 +118,31 @@
         </div>
 
         <!-- GAMES -->
-        <form id="gamesSection" class="create-section"
-              onsubmit="publishGame(event)">
+        <div id="gamesSection" class="create-section">
+    <input
+        type="text"
+        id="gameName"
+        placeholder="Write game name"
+    >
 
-            <h3>Create a game</h3>
+    <button type="button" onclick="createGame()">
+        Create game
+    </button>
+</div>
 
-            <label for="gameName">Game name</label>
-            <input id="gameName" type="text"
-                   placeholder="Write game name"
-                   maxlength="60" required>
-
-            <button type="submit" class="create-submit">
-
-                <script>
+<script>
 function createGame() {
     const gameName = document.getElementById("gameName").value.trim();
 
-    if (!gameName) {
-        alert("Please write a game name.");
+    if (gameName === "") {
+        alert("Please write a game name!");
         return;
     }
 
     localStorage.setItem("voltaGameName", gameName);
     window.location.href = "game_editor.html";
 }
-                </script>
-                
-                Create game
-            </button>
-        </form>
-
-    localStorage.setItem("voltaGameName", gameName);
-    window.location.href = "game_editor.html";
+</script>
 }
 </script>
 
