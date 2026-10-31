@@ -131,5 +131,23 @@
         });
     </script>
 
+    <button type="button" onclick="saveUser()">Done</button>
+
+<script>
+async function saveUser() {
+    const username = document.getElementById("username").value.trim();
+
+    if (!username) {
+        alert("Please write a username!");
+        return;
+    }
+
+    // Save username locally for now
+    localStorage.setItem("voltaUsername", username);
+
+    window.location.href = "home.html";
+}
+</script>
+
 </body>
 </html>
