@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volta Profile</title>
+    <link rel="stylesheet" href="./profile.css">
+</head>
+<body>
+
+    <header class="profile-header">
+        <button onclick="history.back()" class="back-button">←</button>
+        <h2>Profile</h2>
+    </header>
+
+    <main class="profile-container">
+
+        <section class="profile-info">
+            <img
+                src="./noprofilepic.png"
+                alt="Profile picture"
+                class="profile-picture"
+            >
+
+            <h2 id="username">Username</h2>
+
+            <p id="bio">No bio yet.</p>
+
+            <div class="profile-stats">
+                <div>
+                    <strong id="followingCount">0</strong>
+                    <span>Following</span>
+                </div>
+
+                <div>
+                    <strong id="followersCount">0</strong>
+                    <span>Followers</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-content">
+
+            <div class="profile-tabs">
+                <button class="tab active" onclick="showTab('games', this)">
+                    Games
+                </button>
+
+                <button class="tab" onclick="showTab('posts', this)">
+                    Posts
+                </button>
+            </div>
+
+            <div id="gamesTab" class="tab-content">
+                <h3>My Games</h3>
+                <p class="empty-message">No games yet.</p>
+            </div>
+
+            <div id="postsTab" class="tab-content hidden">
+                <h3>My Posts</h3>
+                <p class="empty-message">No posts yet.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        // Load profile information
+        const username = localStorage.getItem("voltaUsername") || "Username";
+        const bio = localStorage.getItem("voltaBio") || "No bio yet.";
+
+        document.getElementById("username").textContent = username;
+        document.getElementById("bio").textContent = bio;
+
+        function showTab(tab, button) {
+            document.getElementById("gamesTab").classList.add("hidden");
+            document.getElementById("postsTab").classList.add("hidden");
+
+            document.getElementById(tab + "Tab").classList.remove("hidden");
+
+            document.querySelectorAll(".tab").forEach(item => {
+                item.classList.remove("active");
+            });
+
+            button.classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
