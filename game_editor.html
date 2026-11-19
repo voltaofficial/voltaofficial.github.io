@@ -32,6 +32,139 @@
         <button class="new-map-button" onclick="newMap()">New map</button>
     </footer>
 
+    <!-- New Map Modal -->
+<div id="newMapModal" class="new-map-overlay">
+    <div class="new-map-window">
+
+        <div class="new-map-header">
+            <h2>New map</h2>
+            <button class="close-map" onclick="closeNewMap()">×</button>
+        </div>
+
+        <div class="map-types">
+            <button class="map-type active"
+                    onclick="selectMapType('Platformer', this)">
+                Platformer
+            </button>
+
+            <button class="map-type"
+                    onclick="selectMapType('RPG', this)">
+                RPG
+            </button>
+        </div>
+
+        <form id="newMapForm" onsubmit="createNewMap(event)">
+
+            <label for="mapName">Map name</label>
+            <input
+                type="text"
+                id="mapName"
+                placeholder="Write map name"
+                required
+            >
+
+            <label>Map size</label>
+
+            <div class="map-size">
+                <div>
+                    <small>Width</small>
+                    <input type="number" id="mapWidth" value="32" min="1">
+                    <span>px</span>
+                </div>
+
+                <div>
+                    <small>Height</small>
+                    <input type="number" id="mapHeight" value="32" min="1">
+                    <span>px</span>
+                </div>
+            </div>
+
+            <label for="mapBackground">Background color</label>
+
+            <div class="background-color">
+                <input
+                    type="color"
+                    id="mapBackground"
+                    value="#87CEEB"
+                >
+                <span id="colorValue">#87CEEB</span>
+            </div>
+
+            <button type="submit" class="create-map-button">
+                Create map
+            </button>
+
+        </form>
+    </div>
+</div>
+
+Replace your old "newMap()" function with:
+
+<script>
+let selectedMapType = "Platformer";
+
+function newMap() {
+    document.getElementById("newMapModal").classList.add("visible");
+}
+
+function closeNewMap() {
+    document.getElementById("newMapModal").classList.remove("visible");
+}
+
+function selectMapType(type, button) {
+    selectedMapType = type;
+
+    document.querySelectorAll(".map-type").forEach(item => {
+        item.classList.remove("active");
+    });
+
+    button.classList.add("active");
+}
+
+const colorInput = document.getElementById("mapBackground");
+
+colorInput.addEventListener("input", function() {
+    document.getElementById("colorValue").textContent =
+        this.value.toUpperCase();
+});
+
+function createNewMap(event) {
+    event.preventDefault();
+
+    const mapName = document.getElementById("mapName").value.trim();
+    const width = Number(document.getElementById("mapWidth").value);
+    const height = Number(document.getElementById("mapHeight").value);
+    const background = document.getElementById("mapBackground").value;
+
+    if (!mapName || width < 1 || height < 1 ||
+        !Number.isInteger(width) || !Number.isInteger(height)) {
+        alert("Please enter a valid map name and map size.");
+        return;
+    }
+
+    const map = {
+        name: mapName,
+        type: selectedMapType,
+        width: width,
+        height: height,
+        background: background
+    };
+
+    const maps = JSON.parse(
+        localStorage.getItem("voltaMaps") || "[]"
+    );
+
+    maps.push(map);
+
+    localStorage.setItem("voltaMaps", JSON.stringify(maps));
+    localStorage.setItem("currentVoltaMap", JSON.stringify(map));
+
+    closeNewMap();
+
+    alert("Map created: " + mapName);
+}
+</script>
+
     <script>
         const gameName = localStorage.getItem("voltaGameName") || "My Game";
         document.getElementById("gameTitle").textContent = gameName;
@@ -51,9 +184,9 @@
             }
         }
 
-        function newMap() {
-            alert("New map coming soon!");
-        }
+        // function newMap() {
+          //  alert("New map coming soon!");
+       // }
     </script>
 
 </body>
