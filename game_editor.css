@@ -90,3 +90,163 @@ body {
 .editor-toolbar button:active {
     opacity: 0.7;
 }
+
+.new-map-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.new-map-overlay.visible {
+    display: flex;
+}
+
+.new-map-window {
+    width: 100%;
+    max-width: 440px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 22px;
+    border-radius: 20px;
+    background: #19243b;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.new-map-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.new-map-header h2 {
+    font-size: 23px;
+}
+
+.close-map {
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    background: #303d55;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.map-types {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.map-type {
+    flex: 1;
+    padding: 13px 8px;
+    border: 1px solid #68758e;
+    border-radius: 12px;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.map-type.active {
+    background: white;
+    color: #244b99;
+    border-color: white;
+    font-weight: bold;
+}
+
+#newMapForm label {
+    display: block;
+    margin: 17px 0 9px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#mapName {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #53617a;
+    border-radius: 10px;
+    outline: none;
+    background: #101827;
+    color: white;
+    font-size: 16px;
+}
+
+.map-size {
+    display: flex;
+    gap: 12px;
+}
+
+.map-size div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px;
+    border-radius: 10px;
+    background: #101827;
+}
+
+.map-size small {
+    color: #b8c4d8;
+}
+
+.map-size input {
+    width: 55px;
+    min-width: 0;
+    padding: 7px;
+    border: 1px solid #53617a;
+    border-radius: 7px;
+    background: #19243b;
+    color: white;
+    font-size: 15px;
+}
+
+.map-size span {
+    font-size: 13px;
+    color: #b8c4d8;
+}
+
+.background-color {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 10px;
+    background: #101827;
+}
+
+#mapBackground {
+    width: 45px;
+    height: 38px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+#colorValue {
+    font-size: 15px;
+}
+
+.create-map-button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #244b99;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    }
